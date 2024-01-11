@@ -1,0 +1,85 @@
+// Add routes for insurance-related functionalities in PatientController::setupRoutes
+void PatientController::setupRoutes() {
+    // Add existing routes first
+
+    // Add route for choosing insurance
+    CROW_ROUTE(this->app, "/patient/choose_insurance").methods(crow::HTTPMethod::POST)([&](const crow::request &req, crow::response &res) {
+        this->chooseInsurance(req, res);
+    });
+
+    // Add route for submitting an insurance claim
+    CROW_ROUTE(this->app, "/patient/submit_claim").methods(crow::HTTPMethod::POST)([&](const crow::request &req, crow::response &res) {
+        this->submitClaim(req, res);
+    });
+
+    // Add route for reviewing an insurance claim
+    CROW_ROUTE(this->app, "/patient/review_claim").methods(crow::HTTPMethod::POST)([&](const crow::request &req, crow::response &res) {
+        this->reviewClaim(req, res);
+    });
+
+    // Add route for approving an insurance claim
+    CROW_ROUTE(this->app, "/patient/approve_claim").methods(crow::HTTPMethod::POST)([&](const crow::request &req, crow::response &res) {
+        this->approveClaim(req, res);
+    });
+}
+
+// Function to handle choosing insurance
+void PatientController::chooseInsurance(const crow::request &req, crow::response &res) {
+    // Get patient ID and insurance type from the request
+    auto json = crow::json::load(req.body);
+    const std::string patient_id = json["patient_id"].s();
+    const std::string insurance_type = json["insurance_type"].s();
+
+    // Call the insurance service method for choosing insurance
+    const std::string result = this->insuranceService->chooseInsurance(patient_id, insurance_type);
+
+    // Return the result
+    res.code = 200;
+    res.body = result;
+    res.end();
+}
+
+// Function to handle submitting an insurance claim
+void PatientController::submitClaim(const crow::request &req, crow::response &res) {
+    // Get patient ID from the request
+    auto json = crow::json::load(req.body);
+    const std::string patient_id = json["patient_id"].s();
+
+    // Call the insurance service method for submitting a claim
+    const std::string result = this->insuranceService->submitClaim(patient_id);
+
+    // Return the result
+    res.code = 200;
+    res.body = result;
+    res.end();
+}
+
+// Function to handle reviewing an insurance claim
+void PatientController::reviewClaim(const crow::request &req, crow::response &res) {
+    // Get patient ID from the request
+    auto json = crow::json::load(req.body);
+    const std::string patient_id = json["patient_id"].s();
+
+    // Call the insurance service method for reviewing a claim
+    const std::string result = this->insuranceService->reviewClaim(patient_id);
+
+    // Return the result
+    res.code = 200;
+    res.body = result;
+    res.end();
+}
+
+// Function to handle approving an insurance claim
+void PatientController::approveClaim(const crow::request &req, crow::response &res) {
+    // Get patient ID from the request
+    auto json = crow::json::load(req.body);
+    const std::string patient_id = json["patient_id"].s();
+
+    // Call the insurance service method for approving a claim
+    const std::string result = this->insuranceService->approveClaim(patient_id);
+
+    // Return the result
+    res.code = 200;
+    res.body = result;
+    res.end();
+}
