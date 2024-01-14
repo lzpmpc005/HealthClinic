@@ -120,3 +120,90 @@ request body:
         "count_visits", columnTypes::INT,
         "patient_ID", columnTypes::TEXT
 }
+
+# (11) New function:patients can chose their health insurance
+
+This 'insurance function' is designed to manage patient's insurance.
+
+## New Feature: Insurance Management
+
+### Overview
+
+This feature allows patients to choose their insurance type and track the status of insurance claims. It includes the following functionalities:
+
+1. **Choose Insurance**
+   - Route: `/patient/choose_insurance`
+   - Method: POST
+   - Parameters:
+     - `patient_id` (string): ID of the patient
+     - `insurance_type` (string): Chosen insurance type (e.g., "public", "private", "none")
+   - Description: Allows patients to select their insurance type.
+
+2. **Submit Insurance Claim**
+   - Route: `/patient/submit_claim`
+   - Method: POST
+   - Parameters:
+     - `patient_id` (string): ID of the patient
+   - Description: Allows patients to submit an insurance claim.
+
+3. **Review Insurance Claim**
+   - Route: `/patient/review_claim`
+   - Method: POST
+   - Parameters:
+     - `patient_id` (string): ID of the patient
+   - Description: Allows patients to review the status of their insurance claim.
+
+4. **Approve Insurance Claim**
+   - Route: `/patient/approve_claim`
+   - Method: POST
+   - Parameters:
+     - `patient_id` (string): ID of the patient
+   - Description: Allows patients to approve the outcome of their insurance claim.
+
+### How to Use
+
+1. **Choosing Insurance Type**
+   - Send a POST request to `/patient/choose_insurance` with the patient's ID and chosen insurance type.
+
+   Example:
+   ```json
+   {
+     "patient_id": "123456",
+     "insurance_type": "private"
+   }
+
+2. **Submitting an Insurance Claim**
+
+   - Send a POST request to `/patient/submit_claim` with the patient's ID.
+  
+    Example:
+    ```json
+    {
+      "patient_id": "123456"
+    }
+3. **Reviewing Insurance Claim**
+
+   - Send a POST request to /patient/review_claim with the patient's ID.
+ 
+   Example:
+    ```json
+    {
+     "patient_id": "123456"
+    }
+4. **Approving Insurance Claim**
+   - Send a POST request to /patient/approve_claim with the patient's ID.
+
+    Example:
+    ```json
+    {
+     "patient_id": "123456"
+    }
+
+### Notes
+
+1. **Ensure valid patient IDs and insurance types are used for the requests.**
+2. **Monitor the response messages to track the success or failure of each operation.**
+
+**Feel free to contact the development team for any assistance or issues related to the new insurance management feature.**
+
+
