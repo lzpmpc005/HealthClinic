@@ -2,7 +2,7 @@
 
 ## 1. INTRODUCTION:
    This health clinic management application is automated and utilizes the Crow package for handling http requests, as well as sqlite3 for data management. It includes a register function for patients and doctors, using patient_id/doctor_id/Controllers. Additionally, users can schedule appointments with a necessary doctors, and doctors can record patients' medical histories. All of this data can be retrieved by sending a GET request. The application is developed in C++ using Windows OS, and Linux operating systems. However, for advanced functionality of application, it has been developed with the server.
-![introduction](clinicapp.png)
+![introduction](/img/clinicapp.png)
 
 
 ## 2. Installation and Running the Application
@@ -18,7 +18,7 @@ React.
 	Install and run Crow (C++ Framework - an easy-to-use framework for building HTTP or Websocket web services)
 
  ## 3. FEATURES
-![introduction](weeklyclinic.png)
+![introduction](/img/weeklyclinic.png)
  # (1) Register patient        
 http://localhost:18080/patient/register        
 request method: POST        
@@ -124,7 +124,7 @@ request body:
 # (11) New function:patients can chose their health insurance
 
 This 'insurance function' is designed to manage patient's insurance.
-
+![introduction](/img/insurance_sequence.png)
 ## New Feature: Insurance Management
 
 ### Overview
