@@ -20,4 +20,7 @@ public:
     std::shared_ptr<IEntity> createEntity(std::string tableName, std::vector<column> columns) override;
 
     void drop() override;
+
+    // 只进行声明，不进行定义
+    sqlite3* getDB() const;
 };
