@@ -205,5 +205,66 @@ This feature allows patients to choose their insurance type and track the status
 2. **Monitor the response messages to track the success or failure of each operation.**
 
 **Feel free to contact the development team for any assistance or issues related to the new insurance management feature.**
+# (12) New Feature: Inventory Monitoring and Alert System
+
+The system introduces a module called StockChecker responsible for periodic checks on specific item inventories and issuing warnings when the inventory falls below a set threshold. 
+The key functionalities include:
+
+
+
+
+### Overview
+
+This feature allows patients to choose their insurance type and track the status of insurance claims. It includes the following functionalities:
+
+1. **Expansion of InventoryManager:**
+    A class named InventoryManager has been introduced for inventory management, allowing the initialization of different item quantities with the addItem method.
+   ```cpp
+    {
+    class InventoryManager {
+    public:
+    void addItem(const std::string& itemName, int initialQuantity);
+    // ... other methods
+     };
+   }
+
+2. **StockChecker Module:**
+   The StockChecker module has been introduced, which checks the inventory level of specific items at regular intervals in a separate thread. When the inventory falls below the predefined threshold, the system outputs a warning.
+   ```cpp
+   class StockChecker {
+   public:
+    StockChecker(InventoryManager& manager, const std::string& itemName, int alertThreshold);
+    void startChecking();
+    // ... other methods
+   };
+3. **Launching StockChecker in the Main Application:**
+    In the main function of the main application, the InventoryManager is initialized, and initial stock quantities are added. Subsequently, a new thread is created to initiate the StockChecker for monitoring the inventory of specific items.
+    ```cpp
+    int main() {
+    // ... initialize other components
+
+    InventoryManager inventoryManager;
+    inventoryManager.addItem("vaccine", 50);
+
+    // Start inventory monitoring in a new thread
+    std::thread stockCheckerThread([&]() {
+        StockChecker stockChecker(inventoryManager, "vaccine", 10);
+        stockChecker.startChecking();
+    });
+
+    // ... start other services
+
+    return 0;
+   }
+### Advantages:
+1. **eal-time monitoring of inventory levels allows for prompt identification of low inventory issues, helping to prevent business disruptions due to item shortages.**
+2. **Enhances the stability and reliability of business operations, especially for critical items like vaccines, by ensuring timely control of inventory levels.**
+   
+### Use Cases:
+1. **When the inventory of specific items (e.g., vaccines) falls below the defined threshold, the system outputs a warning message on the console, reminding staff to procure or redistribute items promptly.**
+
+### Considerations:
+1. **The inventory monitoring module needs to run in the background to ensure periodic checks on inventory levels.**
+2. **Setting inventory threshold values should be based on actual business scenarios to ensure timely and accurate warnings.**
 
 
