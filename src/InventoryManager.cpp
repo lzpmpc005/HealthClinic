@@ -1,15 +1,18 @@
+// InventoryManager.cpp
 #include "InventoryManager.hpp"
-#include <iostream>
 
-void InventoryManager::addItem(const Item& item) {
-    items.push_back(item);
+void InventoryManager::addItem(const std::string& itemName, int initialQuantity) {
+    stockLevels[itemName] = initialQuantity;
 }
 
-void InventoryManager::checkInventory() {
-    for (const auto& item : items) {
-        if (item.getStock() < 10) {
-            std::cout << "Low stock alert for item: " << item.getName() << std::endl;
-            // 在实际应用中，你可以在这里添加发送警报的逻辑
-        }
+int InventoryManager::getStockLevel(const std::string& itemName) const {
+    auto it = stockLevels.find(itemName);
+    return (it != stockLevels.end()) ? it->second : 0;
+}
+
+void InventoryManager::decreaseStock(const std::string& itemName, int quantity) {
+    auto it = stockLevels.find(itemName);
+    if (it != stockLevels.end()) {
+        it->second = std::max(0, it->second - quantity);
     }
 }
