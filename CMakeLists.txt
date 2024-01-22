@@ -40,6 +40,8 @@ add_executable(cpp_weekly_report main.cpp ${SOURCES_FILES} ${HEADERS_FILES}
         headers/Item.hpp
         headers/InventoryManager.hpp
         src/InventoryManager.cpp
+        headers/StockChecker.hpp
+        src/StockChecker.cpp
 )
 
 find_package(SQLite3 REQUIRED)
