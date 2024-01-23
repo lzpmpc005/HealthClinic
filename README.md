@@ -2,6 +2,7 @@
 
 ## 1. INTRODUCTION:
    This health clinic management application is automated and utilizes the Crow package for handling http requests, as well as sqlite3 for data management. It includes a register function for patients and doctors, using patient_id/doctor_id/Controllers. Additionally, users can schedule appointments with a necessary doctors, and doctors can record patients' medical histories. All of this data can be retrieved by sending a GET request. The application is developed in C++ using Windows OS, and Linux operating systems. However, for advanced functionality of application, it has been developed with the server.
+![introduction](/img/fullstack.png)
 ![introduction](/img/clinicapp.png)
 
 
