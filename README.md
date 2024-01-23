@@ -211,7 +211,7 @@ The system introduces a module called StockChecker responsible for periodic chec
 The key functionalities include:
 
 
-
+![introduction](/img/im.png)
 
 ### Overview
 
@@ -227,6 +227,7 @@ This feature allows patients to choose their insurance type and track the status
     // ... other methods
      };
    }
+![introduction](/img/ca.png)
 
 2. **StockChecker Module:**
    The StockChecker module has been introduced, which checks the inventory level of specific items at regular intervals in a separate thread. When the inventory falls below the predefined threshold, the system outputs a warning.
@@ -237,6 +238,8 @@ This feature allows patients to choose their insurance type and track the status
     void startChecking();
     // ... other methods
    };
+![introduction](/img/cc.png)
+
 3. **Launching StockChecker in the Main Application:**
     In the main function of the main application, the InventoryManager is initialized, and initial stock quantities are added. Subsequently, a new thread is created to initiate the StockChecker for monitoring the inventory of specific items.
     ```cpp
