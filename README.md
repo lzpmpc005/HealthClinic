@@ -2,8 +2,6 @@
 
 ## 1. INTRODUCTION:
    This health clinic management application is automated and utilizes the Crow package for handling http requests, as well as sqlite3 for data management. It includes a register function for patients and doctors, using patient_id/doctor_id/Controllers. Additionally, users can schedule appointments with a necessary doctors, and doctors can record patients' medical histories. All of this data can be retrieved by sending a GET request. The application is developed in C++ using Windows OS, and Linux operating systems. However, for advanced functionality of application, it has been developed with the server.
-![introduction](/img/fullstack.png)
-![introduction](/img/clinicapp.png)
 
 
 ## 2. Installation and Running the Application
@@ -19,7 +17,7 @@ React.
 	Install and run Crow (C++ Framework - an easy-to-use framework for building HTTP or Websocket web services)
 
  ## 3. FEATURES
-![introduction](/img/weeklyclinic.png)
+
  # (1) Register patient        
 http://localhost:18080/patient/register        
 request method: POST        
@@ -43,6 +41,7 @@ request method: GET
 http://localhost:18080/doctor/register       
 request method: POST        
 request body:        
+
 {  
     "doctor_id": "Randomly UUID choice"
     "name": "String type of entering an information (A-Z)",        
@@ -212,7 +211,7 @@ The system introduces a module called StockChecker responsible for periodic chec
 The key functionalities include:
 
 
-![introduction](/img/im.png)
+
 
 ### Overview
 
@@ -220,46 +219,16 @@ This feature allows patients to choose their insurance type and track the status
 
 1. **Expansion of InventoryManager:**
     A class named InventoryManager has been introduced for inventory management, allowing the initialization of different item quantities with the addItem method.
-   ```cpp
-    {
-    class InventoryManager {
-    public:
-    void addItem(const std::string& itemName, int initialQuantity);
-    // ... other methods
-     };
-   }
-![introduction](/img/ca.png)
+
+
 
 2. **StockChecker Module:**
    The StockChecker module has been introduced, which checks the inventory level of specific items at regular intervals in a separate thread. When the inventory falls below the predefined threshold, the system outputs a warning.
-   ```cpp
-   class StockChecker {
-   public:
-    StockChecker(InventoryManager& manager, const std::string& itemName, int alertThreshold);
-    void startChecking();
-    // ... other methods
-   };
-![introduction](/img/cc.png)
+
 
 3. **Launching StockChecker in the Main Application:**
     In the main function of the main application, the InventoryManager is initialized, and initial stock quantities are added. Subsequently, a new thread is created to initiate the StockChecker for monitoring the inventory of specific items.
-    ```cpp
-    int main() {
-    // ... initialize other components
 
-    InventoryManager inventoryManager;
-    inventoryManager.addItem("vaccine", 50);
-
-    // Start inventory monitoring in a new thread
-    std::thread stockCheckerThread([&]() {
-        StockChecker stockChecker(inventoryManager, "vaccine", 10);
-        stockChecker.startChecking();
-    });
-
-    // ... start other services
-
-    return 0;
-   }
 ### Advantages:
 1. **eal-time monitoring of inventory levels allows for prompt identification of low inventory issues, helping to prevent business disruptions due to item shortages.**
 2. **Enhances the stability and reliability of business operations, especially for critical items like vaccines, by ensuring timely control of inventory levels.**
@@ -270,5 +239,9 @@ This feature allows patients to choose their insurance type and track the status
 ### Considerations:
 1. **The inventory monitoring module needs to run in the background to ensure periodic checks on inventory levels.**
 2. **Setting inventory threshold values should be based on actual business scenarios to ensure timely and accurate warnings.**
+
+# Contact
+
+If you have any questions and comments about this project ,please contact Karina and Vincent.
 
 
